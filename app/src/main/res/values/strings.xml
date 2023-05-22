@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">NetCompose</string>
+
+    <string name="home">Home</string>
+    <string name="docs">Docs</string>
+    <string name="template">Template</string>
+
+    <string name="async_task">Async Task</string>
+    <string name="auto_Dialog">Auto Dialog</string>
+    <string name="callback_request">Callback Request</string>
+    <string name="coroutine_scope">Coroutine Scope</string>
+    <string name="download_file">Download File</string>
+    <string name="edit_debounce"> Edit Debounce</string>
+    <string name="error_handle">Error Handle</string>
+    <string name="exception_trace">Exception Trace</string>
+    <string name="fastest">Fastest</string>
+    <string name="http_certificate">Https Certificate</string>
+    <string name="interceptor">Interceptor</string>
+    <string name="limited_time">Limited Time</string>
+    <string name="nav_converter">Nav Converter</string>
+    <string name="parallel_network">Parallel Network</string>
+    <string name="preview_cache">Preview Cache</string>
+    <string name="pull_refresh">PullRefresh</string>
+    <string name="push_refresh">Push Refresh</string>
+    <string name="read_cache">Read Cache</string>
+    <string name="request_method">Request Method</string>
+    <string name="state_layout">State Layout</string>
+    <string name="super_interval">Super Interval</string>
+    <string name="switch_dispatcher">Switch Dispatcher</string>
+    <string name="sync_request">Sync Request</string>
+    <string name="timing_request">Timing Request</string>
+    <string name="unique_request">Unique Request</string>
+    <string name="upload_file">Upload File</string>
+    <string name="view_model_request">View Model Request</string>
+</resources>
