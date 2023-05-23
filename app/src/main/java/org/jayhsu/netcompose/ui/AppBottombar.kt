@@ -26,9 +26,10 @@ enum class AppBottomNavType {
 @Composable
  fun AppBottomBar(
     modifier: Modifier = Modifier,
+    appBottomNavState: MutableState<AppBottomNavType>,
     appNavigation: AppNavigation
  ) {
-    val appBottomNavState = remember { mutableStateOf(AppBottomNavType.HOME) }
+
     BottomAppBar(
         actions = {
             NavigationBar(
@@ -37,7 +38,7 @@ enum class AppBottomNavType {
                 NavigationBarItem(
                     selected = appBottomNavState.value == AppBottomNavType.HOME,
                     onClick = {
-                        appNavigation.navigateToHome
+                        appNavigation.navigateToHome()
                         appBottomNavState.value = AppBottomNavType.HOME
                     },
                     icon = { Icon(imageVector = Icons.Filled.Home, contentDescription = null) },
@@ -46,7 +47,7 @@ enum class AppBottomNavType {
                 NavigationBarItem(
                     selected = appBottomNavState.value == AppBottomNavType.DOC,
                     onClick = {
-                        appNavigation.navigateToDoc
+                        appNavigation.navigateToDoc()
                         appBottomNavState.value = AppBottomNavType.DOC
                     },
                     icon = { Icon(imageVector = Icons.Filled.LibraryBooks, contentDescription = null) },
@@ -55,7 +56,7 @@ enum class AppBottomNavType {
                 NavigationBarItem(
                     selected = appBottomNavState.value == AppBottomNavType.TEMPLATE,
                     onClick = {
-                        appNavigation.navigateToTemplate
+                        appNavigation.navigateToTemplate()
                         appBottomNavState.value = AppBottomNavType.TEMPLATE
                     },
                     icon = { Icon(imageVector = Icons.Filled.Apps, contentDescription = null) },
@@ -75,6 +76,7 @@ fun AppBottomBarPreview(){
         val navController = rememberAnimatedNavController()
         val appNavigation = remember(navController) { AppNavigation(navController) }
         AppBottomBar(
+            appBottomNavState = remember { mutableStateOf(AppBottomNavType.HOME) },
             appNavigation = appNavigation
         )
     }

@@ -23,6 +23,7 @@ import org.jayhsu.netcompose.data.model.HomeScreenItems
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
+    appBottomNavState: MutableState<AppBottomNavType>,
     appNavigation: AppNavigation,
     viewModel: HomeViewModel
 ) {
@@ -38,6 +39,7 @@ fun HomeScreen(
         },
         bottomBar = {
             AppBottomBar(
+                appBottomNavState = appBottomNavState,
                 appNavigation = appNavigation
             )
         }

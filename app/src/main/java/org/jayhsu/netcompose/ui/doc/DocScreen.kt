@@ -28,6 +28,7 @@ import org.jayhsu.netcompose.ui.AppNavigation
 @Composable
 fun DocScreen(
     modifier: Modifier = Modifier,
+    appBottomNavState: MutableState<AppBottomNavType>,
     appNavigation: AppNavigation
 ) {
     val urlState = remember { mutableStateOf(AppPreferences.lastViewedUrl!!) }
@@ -44,6 +45,7 @@ fun DocScreen(
         },
         bottomBar = {
             AppBottomBar(
+                appBottomNavState = appBottomNavState,
                 appNavigation = appNavigation
             )
         },

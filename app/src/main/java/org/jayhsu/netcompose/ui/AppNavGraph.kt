@@ -33,6 +33,7 @@ fun AppNavGraph (
     appNavigation: AppNavigation,
     appContainer: AppContainer
 ) {
+    val appBottomNavState = remember { mutableStateOf(AppBottomNavType.HOME) }
     AnimatedNavHost(
         navController = navController,
         startDestination = AppDestinations.HOME,
@@ -55,12 +56,14 @@ fun AppNavGraph (
                 factory = HomeViewModel.provideFactory(appContainer)
             )
             HomeScreen(
+                appBottomNavState = appBottomNavState,
                 appNavigation = appNavigation,
                 viewModel = homeViewModel
             )
         }
         composable(AppDestinations.DOC){
             DocScreen(
+                appBottomNavState = appBottomNavState,
                 appNavigation = appNavigation
             )
         }
@@ -71,6 +74,7 @@ fun AppNavGraph (
                 factory = HomeViewModel.provideFactory(appContainer)
             )
             RequestMethodScreen(
+                appBottomNavState = appBottomNavState,
                 appNavigation = appNavigation,
                 viewModel = homeViewModel
             )
