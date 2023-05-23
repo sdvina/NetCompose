@@ -8,12 +8,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import org.jayhsu.netcompose.repository.AppContainer
 import org.jayhsu.netcompose.repository.AppContainerImpl
+import org.jayhsu.netcompose.ui.AppBottomNavType
 import org.jayhsu.netcompose.ui.AppNavGraph
 import org.jayhsu.netcompose.ui.AppNavigation
 import org.jayhsu.netcompose.ui.theme.AppTheme

@@ -26,9 +26,9 @@ enum class AppBottomNavType {
 @Composable
  fun AppBottomBar(
     modifier: Modifier = Modifier,
-    appBottomNavState: MutableState<AppBottomNavType>,
     appNavigation: AppNavigation
  ) {
+    val appBottomNavState = remember { mutableStateOf(AppBottomNavType.HOME) }
     BottomAppBar(
         actions = {
             NavigationBar(
@@ -37,8 +37,8 @@ enum class AppBottomNavType {
                 NavigationBarItem(
                     selected = appBottomNavState.value == AppBottomNavType.HOME,
                     onClick = {
-                        appBottomNavState.value = AppBottomNavType.HOME
                         appNavigation.navigateToHome
+                        appBottomNavState.value = AppBottomNavType.HOME
                     },
                     icon = { Icon(imageVector = Icons.Filled.Home, contentDescription = null) },
                     label = { Text(text = stringResource(R.string.home)) }
@@ -46,8 +46,8 @@ enum class AppBottomNavType {
                 NavigationBarItem(
                     selected = appBottomNavState.value == AppBottomNavType.DOC,
                     onClick = {
-                        appBottomNavState.value = AppBottomNavType.DOC
                         appNavigation.navigateToDoc
+                        appBottomNavState.value = AppBottomNavType.DOC
                     },
                     icon = { Icon(imageVector = Icons.Filled.LibraryBooks, contentDescription = null) },
                     label = { Text(text = stringResource(R.string.docs)) }
@@ -55,8 +55,8 @@ enum class AppBottomNavType {
                 NavigationBarItem(
                     selected = appBottomNavState.value == AppBottomNavType.TEMPLATE,
                     onClick = {
-                        appBottomNavState.value = AppBottomNavType.TEMPLATE
                         appNavigation.navigateToTemplate
+                        appBottomNavState.value = AppBottomNavType.TEMPLATE
                     },
                     icon = { Icon(imageVector = Icons.Filled.Apps, contentDescription = null) },
                     label = { Text(text = stringResource(R.string.template)) }
@@ -75,7 +75,6 @@ fun AppBottomBarPreview(){
         val navController = rememberAnimatedNavController()
         val appNavigation = remember(navController) { AppNavigation(navController) }
         AppBottomBar(
-            appBottomNavState = remember { mutableStateOf(AppBottomNavType.HOME) },
             appNavigation = appNavigation
         )
     }

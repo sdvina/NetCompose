@@ -5,6 +5,9 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -14,11 +17,13 @@ import org.jayhsu.netcompose.repository.AppContainer
 import org.jayhsu.netcompose.ui.doc.DocScreen
 import org.jayhsu.netcompose.ui.home.HomeScreen
 import org.jayhsu.netcompose.ui.home.HomeViewModel
+import org.jayhsu.netcompose.ui.home.demo.RequestMethodScreen
 
 object AppDestinations {
     const val HOME = "home"
     const val DOC = "doc"
     const val TEMPLATE = "template"
+    const val REQUEST_METHOD = "request_method"
 }
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -55,9 +60,20 @@ fun AppNavGraph (
             )
         }
         composable(AppDestinations.DOC){
-            DocScreen()
+            DocScreen(
+                appNavigation = appNavigation
+            )
         }
         composable(AppDestinations.TEMPLATE){
+        }
+        composable(AppDestinations.REQUEST_METHOD){
+            val homeViewModel: HomeViewModel = viewModel(
+                factory = HomeViewModel.provideFactory(appContainer)
+            )
+            RequestMethodScreen(
+                appNavigation = appNavigation,
+                viewModel = homeViewModel
+            )
         }
     }
 }

@@ -1,5 +1,6 @@
 package org.jayhsu.netcompose.ui.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -25,7 +26,6 @@ fun HomeScreen(
     appNavigation: AppNavigation,
     viewModel: HomeViewModel
 ) {
-    val appBottomNavState = remember { mutableStateOf(AppBottomNavType.HOME) }
     Scaffold(
         topBar = {
             TopAppBar(
@@ -38,20 +38,21 @@ fun HomeScreen(
         },
         bottomBar = {
             AppBottomBar(
-                appBottomNavState = appBottomNavState,
                 appNavigation = appNavigation
             )
         }
     ) { innerPadding ->
         HomeScreenContent(
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.padding(innerPadding),
+            appNavigation = appNavigation
         )
     }
 }
 
 @Composable
 fun HomeScreenContent(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    appNavigation: AppNavigation
 ) {
     LazyColumn(
         modifier = modifier.fillMaxSize()
@@ -60,10 +61,11 @@ fun HomeScreenContent(
             Divider()
             ContentItem(
                 name = stringResource(HomeScreenItems.RequestMethod.name),
-                imageVector = Icons.Outlined.NetworkPing
+                imageVector = Icons.Outlined.NetworkPing,
+                clickable = appNavigation.navigateToRequestMethod
             )
         }
-        item {
+        /*item {
             ContentItem(
                 name = stringResource(HomeScreenItems.SyncRequest.name),
                 imageVector = Icons.Outlined.NetworkPing
@@ -218,7 +220,7 @@ fun HomeScreenContent(
                 name = stringResource(HomeScreenItems.TimingRequest.name),
                 imageVector = Icons.Outlined.NetworkPing
             )
-        }
+        }*/
     }
 }
 
@@ -227,8 +229,10 @@ fun HomeScreenContent(
 fun ContentItem(
     name: String,
     imageVector: ImageVector,
+    clickable: () -> Unit
 ){
     ListItem(
+        modifier = Modifier.clickable { clickable() },
         headlineText = { Text(name) },
         leadingContent = {
             Icon(

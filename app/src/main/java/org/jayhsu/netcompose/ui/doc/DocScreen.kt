@@ -19,12 +19,16 @@ import org.jayhsu.netcompose.data.constant.AppConstant
 import org.jayhsu.netcompose.data.local.AppPreferences
 import org.jayhsu.netcompose.ui.theme.AppTheme
 import org.jayhsu.netcompose.R
+import org.jayhsu.netcompose.ui.AppBottomBar
+import org.jayhsu.netcompose.ui.AppBottomNavType
+import org.jayhsu.netcompose.ui.AppNavigation
 
 @SuppressLint("SetJavaScriptEnabled")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DocScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    appNavigation: AppNavigation
 ) {
     val urlState = remember { mutableStateOf(AppPreferences.lastViewedUrl!!) }
     val webViewState = rememberWebViewState(url = urlState.value)
@@ -36,6 +40,11 @@ fun DocScreen(
             ReferenceTopBar(
                 urlState = urlState,
                 searchState = searchState
+            )
+        },
+        bottomBar = {
+            AppBottomBar(
+                appNavigation = appNavigation
             )
         },
         snackbarHost = { SnackbarHost(snackbarHostState) }
@@ -107,13 +116,4 @@ fun ReferenceTopBar(
             }
         }
     )
-}
-
-@Preview
-@Composable
-fun DocScreenPreview(){
-    AppTheme {
-        DocScreen(
-        )
-    }
 }

@@ -15,6 +15,13 @@ class AppNavigation (
             restoreState = true
         }
     }
+    val navigateToRequestMethod: () -> Unit = {
+        navController.navigate(AppDestinations.REQUEST_METHOD) {
+            popUpTo(navController.graph.findStartDestination().id) {
+                saveState = true
+            }
+        }
+    }
     val navigateToDoc: () -> Unit = {
         navController.navigate(AppDestinations.DOC) {
             popUpTo(navController.graph.findStartDestination().id) {
