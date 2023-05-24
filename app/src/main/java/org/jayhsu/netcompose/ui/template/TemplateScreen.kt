@@ -1,4 +1,4 @@
-package org.jayhsu.netcompose.ui.home.demo
+package org.jayhsu.netcompose.ui.template
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -9,33 +9,20 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import com.drake.net.Delete
-import com.drake.net.Get
-import com.drake.net.Head
-import com.drake.net.Options
-import com.drake.net.Patch
-import com.drake.net.Post
-import com.drake.net.Put
-import com.drake.net.Trace
-import com.drake.net.utils.scopeNetLife
 import org.jayhsu.netcompose.R
 import org.jayhsu.netcompose.ui.AppBottomBar
 import org.jayhsu.netcompose.ui.AppBottomNavType
 import org.jayhsu.netcompose.ui.AppNavigation
-import org.jayhsu.netcompose.ui.home.HomeViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RequestMethodScreen(
+fun TemplateScreen(
     modifier: Modifier = Modifier,
     appBottomNavState: MutableState<AppBottomNavType>,
-    appNavigation: AppNavigation,
-    viewModel: HomeViewModel
+    appNavigation: AppNavigation
 ){
     Scaffold(
         topBar = {
@@ -57,9 +44,7 @@ fun RequestMethodScreen(
         Column(
             modifier = Modifier.padding(innerPadding)
         ){
-
-            Text(text = "111111111111111111")
-
+            Text(text = "222222222222222222222")
         }
     }
 }

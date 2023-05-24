@@ -72,7 +72,7 @@ enum class AppBottomNavType {
 @Preview
 @Composable
 fun AppBottomBarPreview(){
-    AppTheme() {
+    AppTheme {
         val navController = rememberAnimatedNavController()
         val appNavigation = remember(navController) { AppNavigation(navController) }
         AppBottomBar(

@@ -18,6 +18,7 @@ import org.jayhsu.netcompose.ui.doc.DocScreen
 import org.jayhsu.netcompose.ui.home.HomeScreen
 import org.jayhsu.netcompose.ui.home.HomeViewModel
 import org.jayhsu.netcompose.ui.home.demo.RequestMethodScreen
+import org.jayhsu.netcompose.ui.template.TemplateScreen
 
 object AppDestinations {
     const val HOME = "home"
@@ -68,6 +69,10 @@ fun AppNavGraph (
             )
         }
         composable(AppDestinations.TEMPLATE){
+            TemplateScreen(
+                appBottomNavState = appBottomNavState,
+                appNavigation = appNavigation
+            )
         }
         composable(AppDestinations.REQUEST_METHOD){
             val homeViewModel: HomeViewModel = viewModel(

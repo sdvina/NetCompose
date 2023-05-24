@@ -13,11 +13,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import com.google.accompanist.web.*
 import org.jayhsu.netcompose.data.constant.AppConstant
 import org.jayhsu.netcompose.data.local.AppPreferences
-import org.jayhsu.netcompose.ui.theme.AppTheme
 import org.jayhsu.netcompose.R
 import org.jayhsu.netcompose.ui.AppBottomBar
 import org.jayhsu.netcompose.ui.AppBottomNavType
@@ -37,12 +35,6 @@ fun DocScreen(
     val searchState = remember { mutableStateOf(false) }
     Scaffold(
         modifier = modifier,
-        topBar = {
-            ReferenceTopBar(
-                urlState = urlState,
-                searchState = searchState
-            )
-        },
         bottomBar = {
             AppBottomBar(
                 appBottomNavState = appBottomNavState,
